@@ -11,16 +11,16 @@
     {{- if eq $host "ig" -}}
       {{ $hideCaption := cond (eq (.Get 3) "hidecaption") "1" "0" }}
       {{ with resources.GetRemote "https://graph.facebook.com/v15.0/instagram_oembed/?url=https://instagram.com/" $type "/" $id "/&hidecaption=" $hideCaption "&access_token=" $accessToken }}
-        {{ .html | safeHTML }}
+        {{ (. | transform.Unmarshal).html | safeHTML }}
       {{ end }}
     {{- else if eq $host "fb" -}}
       {{- if eq $type "page" -}}
         {{ with resources.GetRemote "https://graph.facebook.com/v15.0/oembed_" $type "?url=" $id "&show_posts=false" "&access_token=" $accessToken }}
-          {{ .html | safeHTML }}
+          {{ (. | transform.Unmarshal).html | safeHTML }}
         {{ end }}
       {{- else -}}
         {{ with resources.GetRemote "https://graph.facebook.com/v15.0/oembed_" $type "?url=" $id "&access_token=" $accessToken }}
-          {{ .html | safeHTML }}
+          {{ (. | transform.Unmarshal).html | safeHTML }}
         {{ end }}
       {{- end -}}
     {{- end -}}

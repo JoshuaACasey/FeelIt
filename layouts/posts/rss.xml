@@ -17,10 +17,10 @@
         {{- end -}}
         {{- with .Site.Params.author.email -}}
             <managingEditor>
-                {{- . }}{{ with $.site.Params.author.name }} ({{ . }}){{ end -}}
+                {{- . }}{{ with $.Site.Params.author.name }} ({{ . }}){{ end -}}
             </managingEditor>
             <webMaster>
-                {{- . }}{{ with $.site.Params.author.name }} ({{ . }}){{ end -}}
+                {{- . }}{{ with $.Site.Params.author.name }} ({{ . }}){{ end -}}
             </webMaster>
         {{- end -}}
         {{- with .Site.Copyright -}}
